@@ -11,13 +11,17 @@
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
     <ion-side-menu side="left">
-        <ion-header-bar class="bar-stable">
-            <h1 class="title">Left</h1>
+        <ion-header-bar class="bar-side">
+            <div class="side-image">
+                <figure>
+                    <a href="#/app/home" menu-close><img src="img/ideaal-catering-logo.png"></a>
+                </figure>
+            </div>
         </ion-header-bar>
-        <ion-content>
+        <ion-content style="top:170px;">
             <ion-list class="side-menu">
-                <ion-item nav-clear href="#/app/bbq-planner" class="item-icon-left">
-                    <i class="icon ln-home side-menu-i"></i> Home
+                <ion-item nav-clear href="#/app/home" menu-close class="item-icon-left">
+                    <i class="icon ion-ios-home-outline side-menu-i"></i> Home
                 </ion-item>
                 <ion-item nav-clear href="#/app/bbq-planner" class="item-icon-left">
                     <i class="icon ion-clipboard side-menu-i"></i> BBQ Planner

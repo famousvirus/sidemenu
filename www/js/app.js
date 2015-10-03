@@ -42,36 +42,59 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
     })
 
     .state('app.browse', {
-            url: '/browse',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/browse.html'
-                }
-            }
-        })
-        .state('app.home', {
-            url: '/home',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/home.html',
-                }
-            }
-        })
-
-    .state('app.groepspakketten', {
-        url: '/groepspakketten',
+        url: '/browse',
         views: {
             'menuContent': {
-                templateUrl: 'templates/groepspakketten.html',
+                templateUrl: 'templates/browse.html'
+            }
+        }
+    })
+
+    .state('app.home', {
+        url: '/home',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/home.html',
+
+            }
+        }
+    })
+
+
+    .state('app.pakketten', {
+        url: '/pakketten',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/pakketten.html',
                 controller: 'BrowseCtrl'
             }
         }
     })
- .state('app.drankarrangement', {
-        url: '/drankarrangement',
+
+    .state('app.groepspakketten', {
+            url: '/groepspakketten',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/groepspakketten.html',
+                    controller: 'BrowseCtrl'
+                }
+            }
+        })
+        .state('app.drankarrangement', {
+            url: '/drankarrangement',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/drankarrangement.html',
+                    controller: 'BrowseCtrl'
+                }
+            }
+        })
+
+    .state('app.zelf-combineren', {
+        url: '/zelf-combineren',
         views: {
             'menuContent': {
-                templateUrl: 'templates/drankarrangement.html',
+                templateUrl: 'templates/zelf-combineren.html',
                 controller: 'BrowseCtrl'
             }
         }
@@ -111,16 +134,6 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
         views: {
             'menuContent': {
                 templateUrl: 'templates/hoe-werkt-het.html',
-            }
-        }
-    })
-
-    .state('app.single', {
-        url: '/playlists/:playlistId',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/playlist.html',
-                controller: 'PlaylistCtrl'
             }
         }
     });
