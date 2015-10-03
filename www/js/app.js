@@ -67,6 +67,53 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
             }
         }
     })
+ .state('app.drankarrangement', {
+        url: '/drankarrangement',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/drankarrangement.html',
+                controller: 'BrowseCtrl'
+            }
+        }
+    })
+
+    .state('app.verhuurproducten', {
+        url: '/verhuurproducten',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/verhuurproducten.html',
+                controller: 'BrowseCtrl'
+            }
+        }
+    })
+
+    .state('app.bbq-planner', {
+        url: '/bbq-planner',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/bbq-planner.html',
+
+            }
+        }
+    })
+
+    .state('app.over-ons', {
+        url: '/over-ons',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/over-ons.html',
+            }
+        }
+    })
+
+    .state('app.hoe-werkt-het', {
+        url: '/hoe-werkt-het',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/hoe-werkt-het.html',
+            }
+        }
+    })
 
     .state('app.single', {
         url: '/playlists/:playlistId',
