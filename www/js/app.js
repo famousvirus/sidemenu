@@ -120,6 +120,17 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
         }
     })
 
+
+    .state('app.winkelwagen', {
+        url: '/winkelwagen',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/winkelwagen.html',
+                controller: 'CartCtrl'
+            }
+        }
+    })
+
     .state('app.bbq-planner', {
         url: '/bbq-planner',
         views: {
