@@ -7,6 +7,11 @@
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
             </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <a href="#/app/winkelwagen">
+                    <button menu-toggle="right" class="button icon ion-bag"></button>
+                </a>
+            </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
@@ -26,10 +31,10 @@
                 <ion-item nav-clear href="#/app/bbq-planner" class="item-icon-left">
                     <i class="icon ion-clipboard side-menu-i"></i> BBQ Planner
                 </ion-item>
-                <ion-item nav-clear href="#/app/hoe-werkt-het" menu-close class="item-icon-left">
+                <ion-item menu-close href="#/app/hoe-werkt-het" class="item-icon-left">
                     <i class="icon ion-ios-color-wand-outline side-menu-i"></i> Hoe werkt het
                 </ion-item>
-                <ion-item nav-clear href="#/app/over-ons" menu-close class="item-icon-left">
+                <ion-item menu-close href="#/app/over-ons" class="item-icon-left">
                     <i class="icon ion-ios-people-outline side-menu-i"></i> Over ons
                 </ion-item>
                 <ion-item nav-clear href="#/app/contact" menu-close class="item-icon-left">
