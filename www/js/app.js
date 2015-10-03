@@ -58,6 +58,15 @@ angular.module('ideaalCatering', ['ionic', 'starter.controllers'])
       }
     })
 
+        .state('app.groepspakketten', {
+      url: '/groepspakketten',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/groepspakketten.html',
+        }
+      }
+    })
+
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
