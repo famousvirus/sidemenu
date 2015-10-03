@@ -110,6 +110,16 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
         }
     })
 
+    .state('app.details', {
+        url: '/details/:productID',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/details.html',
+                controller: 'BrowseDetailsCtrl'
+            }
+        }
+    })
+
     .state('app.bbq-planner', {
         url: '/bbq-planner',
         views: {
