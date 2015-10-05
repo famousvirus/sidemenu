@@ -4,7 +4,7 @@
     </div>
     <div class="tabs-striped tabs-top tabs-background-light tabs-color-assertive">
         <div class="tabs">
-            <a class="tab-item selected" href="" rel="tab1" ng:click="selected=1" ng:class="{'active' : selected==1 }">Vless</a>
+            <a class="tab-item" href="" rel="tab1" ng:click="selected=1" ng:class="{'active' : selected==1 }">Vless</a>
             <a class="tab-item" href=""  rel="tab2" ng:click="selected=2" ng:class="{'active' : selected==2 }">Vegetarisch</a>
             <a class="tab-item" href=""  rel="tab3" ng:click="selected=3" ng:class="{'active' : selected==3 }">Vis</a>
             <a class="tab-item" href="" rel="tab4" ng:click="selected=4" ng:class="{'active' : selected==4 }">Specials</a>
@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div id="tab1" class="tabContent selected" ng:show="selected == 1">
+    <div id="tab1" class="tabContent" ng:show="selected == 1">
     <ion-content class="has-tabs-top" overflow-scroll="false" scroll-sista delegate-handle-"myScrollDelegate">
         <div class="list card" ng-repeat="product in products | filter:{categories:'Vlees'}">
             <div class="item item-image" style="height: 200px;" > 

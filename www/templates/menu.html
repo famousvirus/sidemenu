@@ -7,8 +7,18 @@
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
             </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+        <a href="#/app/winkelwagen">
+        <button menu-toggle="right" class="button button-icon icon ion-ios-cart"></button>
+        </a>
+        </ion-nav-buttons>
         </ion-nav-bar>
+
         <ion-nav-view name="menuContent"></ion-nav-view>
+        <div class="ng-hide">
+            <ion-nav-view name="menuCart"></ion-nav-view>
+        </div>
     </ion-side-menu-content>
     <ion-side-menu side="left">
         <ion-header-bar class="bar-side">
@@ -23,7 +33,7 @@
                 <ion-item nav-clear href="#/app/home" menu-close class="item-icon-left">
                     <i class="icon ion-ios-home-outline side-menu-i"></i> Home
                 </ion-item>
-                <ion-item nav-clear href="#/app/bbq-planner" class="item-icon-left">
+                <ion-item nav-clear href="#/app/bbqplanner" menu-close class="item-icon-left">
                     <i class="icon ion-clipboard side-menu-i"></i> BBQ Planner
                 </ion-item>
                 <ion-item nav-clear href="#/app/hoe-werkt-het" menu-close class="item-icon-left">
@@ -38,10 +48,15 @@
                 <ion-item nav-clear href="#/app/" menu-close class="item-icon-left">
                     <i class="icon ion-social-whatsapp-outline side-menu-i"></i> Whatsapp
                 </ion-item>
-                <ion-item nav-clear href="#/app/winkelwagen" menu-close class="item-icon-left" ng-click="share();">
+                <ion-item ng-controller="CartCtrl"nav-clear href="#/app/winkelwagen" menu-close class="item-icon-left">
                     <i class="icon ln-cart side-menu-i"></i> Winkelwagen
                 </ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>
+<ion-footer-bar align-title="left" class="tabs-color-active-positive">
+<a href="#/app/winkelwagen"> 
+<h1 class="title">Total: {{grand.Total | currency : "€"}}</h1>
+</a>
+</ion-footer-bar>

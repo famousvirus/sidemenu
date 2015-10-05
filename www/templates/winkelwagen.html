@@ -1,8 +1,8 @@
 <ion-view>
     <div class="bar has-tabs-top bar-header bar-dark">
-        <h1 class="title">Winkwelwagen</h1>
+        <h1 class="title">Winkelwagen</h1>
     </div>
-    <ion-content class="padding">
+    <ion-content overflow-scroll="false" >
         <div ng-if="cartItems.length">
             <div class="list card" ng-repeat="product in cartItems" ng-init="getTotal(product)">
                 <div class="item item-thumbnail-left item-icon-right">
@@ -14,10 +14,7 @@
                 <div class="list">
                     <label class="item item-divider">
                         <div class="input-label alignleft">
-                            Price
-                        </div>
-                        <div class="input-label alignright">
-                            {{product.price | currency:"€":2}}
+                            Price : {{product.price | currency:"€":2}}
                         </div>
                         <div style="clear: both;"></div>
                     </label>
@@ -28,9 +25,7 @@
 
                     <label class="item item-divider">
                         <div class="input-label alignleft">
-                            Total
-                        </div>
-                        <div class="input-label alignright">
+                            Total:
                             {{product.total | currency:"€":2}}
                         </div>
                         <div style="clear: both;"></div>
@@ -42,9 +37,7 @@
                 <div class="list">
                     <label class="item">
                         <div class="input-label alignleft assertive">
-                            TOTAL
-                        </div>
-                        <div class="input-label alignright assertive">
+                            TOTAL:
                             {{grand.Total | currency:"€":2}}
                         </div>
                         <div style="clear: both;"></div>
@@ -56,11 +49,18 @@
             </button>
         </div>
         <div ng-if="!cartItems.length">
-            <h1>Cart is still Empty!</h1>
-            <p>Browse and Add some Items first</p>
+            <div class="list card">
+            <div class="item item-image" style="height: 200px;" > 
+                <img href="#" ng-src=img/ideaal-catering-logo.png >
+            </div>
+            </div>
+            <div class="list card" >
+                <div style="padding: 20px; text-align:center;"> 
+                     <h2>Uw winkelwagen is leeg!</h2>
+                    <p>Kijk naar onze producten</p>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>
-<ion-footer-bar align-title="left" class="tabs-color-active-positive">
-  <h1 class="title">Total: {{grand.Total | currency : "€"}}</h1>
-</ion-footer-bar>
+

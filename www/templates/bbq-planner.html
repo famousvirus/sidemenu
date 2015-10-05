@@ -1,0 +1,90 @@
+<ion-view>
+    <div class="bar bar-header bar-dark">
+        <h1 class="title"BBQ Planner</h1>
+    </div>
+    <ion-content overflow-scroll="false" delegate-handle="mainScroll" on-scroll="mainscrolling();">
+        <div class="logo">
+            <img src="img/ideaal-catering-logo.png">
+        </div>
+        <div class="card" style="text-align:center;">
+            <div class="item item-divider">
+                BBQ Planner
+            </div>
+            <div class="item item-text-wrap">
+                <p> Vraag offerte aan!</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <p class="pull-right">1/10</p>
+                Met hoeveel personen wilt u gaan barbecueën?
+            </div>
+            <div class="item range">
+                <i class="icon ion-ios-person-outline"></i>
+                <input type="range" name="volume">
+                <i class="icon ion-ios-people-outline"></i>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <p class="pull-right">2/10</p>
+                Wat is uw budget per persoon?
+            </div>
+            <div class="item range">
+                <i class="icon ion-social-euro-outline"></i>
+                <input type="range" name="volume">
+                <i class="icon ion-social-euro-outline"></i><i class="icon ion-social-euro-outline"></i>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <p class="pull-right">3/10</p>
+                Waar moet de BBQ plaatvinden?
+            </div>
+            <ul class="list">
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Nog onbekend (dan krijgt u van ons een suggestie)
+                </li>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Woonhuis
+                </li>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Bedrijf
+                </li>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Zaal
+                </li>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Kasteel
+                </li>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Clubhuis
+                </li>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Openlucht
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

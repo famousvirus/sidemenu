@@ -5,22 +5,19 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
     $scope.shouldAnimate = false;
     console.log($localstorage.getObject('cart'));
     $scope.cartItems = $localstorage.getArray('cart');
-    
 
     //$localstorage.destroy('purchaseHistory');
     $scope.purchaseHistory = $localstorage.getArray('purchaseHistory');
-
     $scope.grand = !angular.isArray($localstorage.getArray('grand')) ? $localstorage.getArray('grand') : {
         "Total": 0,
         "Weight": 0,
         "Shipping": 0
-    }
-    
+         };
 
     $scope.intoCart = function(item) {
-
+ 
         $ionicLoading.show({
-            template: 'Item Added to Cart'
+            template: 'toegevoegd aan winkelwagen'
         });
         $timeout(function() {
             $ionicLoading.hide();
@@ -35,17 +32,19 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
         $scope.cartItems.push(item);
         $localstorage.setObject('cart', $scope.cartItems);
         console.log($scope.cartItems);
+
     }
 
     $scope.destoryCart = function(item) {
         $scope.cartItems = [];
         $localstorage.destroy('cart');
     }
-
 })
 
-.controller('BrowseCtrl', function($scope, dataService, $ionicLoading, $localstorage) {
-   var recache = false;      
+.controller('BrowseCtrl', function($state, $scope, dataService, $ionicLoading, $localstorage) {
+
+    var recache = false;      
+
     
     if (!$localstorage.getObject('All').length) {
         recache = true;
@@ -56,14 +55,14 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
     templateUrl:"templates/loading.html" 
     });
     dataService.getItems().then(function(returnData) {
-    console.log(returnData);
     $scope.products = returnData.products;
     $localstorage.setObject('All', returnData.products);
     $ionicLoading.hide();
-        });
+    });
     } else {
     $scope.products = $localstorage.getObject('All');
-    }
+    };    
+    
 })
     
 
@@ -73,18 +72,21 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
     var products = $localstorage.getObject('All');
     $scope.products = products.filter(function( obj ) {
     return obj.id == ID});
+
     $scope.list = [];
-    $scope.number = 1;
+    $scope.number = 0;
+
     $scope.submit = function() {
         if ($scope.number) {
-        $scope.list.push(this.number);
         $localstorage.destroy('quantity');
+        $scope.list.push(this.number);
         $scope.products[0].quantity  = $scope.list[0];
-        $localstorage.setObject('quantity',                         $scope.products[0].quantity);
+        $localstorage.setObject('quantity', $scope.products[0].quantity);
         }
+        console.log($scope.products[0].quantity);
     }
     
-        $scope.addQuantity = function(product) {
+    $scope.addQuantity = function(product) {
             ++$scope.number;
         }
 
@@ -95,9 +97,22 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
             --$scope.number;
         }
     }
+
 })
 
 .controller('CheckoutCtrl', function($scope, $stateParams, dataService, $localstorage, $ionicScrollDelegate, $state, $ionicLoading) {
+
+
+    $scope.load = function() {
+
+        $ionicLoading.show({
+            template: 'Please Wait'
+        });
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 2000);
+    }
+
 
     $scope.formNotValid = false;
 
@@ -232,7 +247,7 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
             $scope.getTotal($scope.cartItems[i]);
         };
     }
-    
+
 
 
     $scope.getTotal = function(product) {
@@ -241,7 +256,6 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
         var total = 0;
         var weight = 0;
         var quan = $localstorage.getObject ('quantity');
-
 
         if (angular.isUndefined(product.quantity)) {
             product.quantity = quan;
@@ -262,33 +276,7 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
         $localstorage.setObject('cart', $scope.cartItems);
         $localstorage.setObject('grand', $scope.grand)
     }
-
-    $ionicModal.fromTemplateUrl('my-modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
-    $scope.openModal = function(product) {
-        $scope.currentProduct = product;
-        $scope.modal.show();
-    };
-    $scope.closeModal = function() {
-        $scope.modal.hide();
-    };
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-        $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
-        // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-        // Execute action
-    });
-
+    
     $scope.toCheckout = function() {
         $state.go('tab.checkout');
     }

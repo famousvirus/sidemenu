@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div id="tab1" class="tabContent selected" ng:show="selected == 1">
+    <div id="tab1" class="tabContent selected" ng:show="selected==1">
     <ion-content class="has-tabs-top" overflow-scroll="false">
         <div class="list card" ng-repeat="product in products | filter:{categories:'BBQ/Koeling'}">
             <div class="item item-image" style="height: 200px;" > 
@@ -96,17 +96,4 @@
         </div>
     </ion-content>
     </div>
-
-    <ion-tabs class="tabs-light tabs-icon-top">
-        <ion-tab title="Home" href="#" icon-on="ion-ios-home-outline balanced" icon-off="ion-ios-home-outline">
-        </ion-tab>
-        <ion-tab title="BBQ Planner" href="#/app/bbq-planner" icon-on="ion-clipboard balanced" icon-off="ion-clipboard">
-        </ion-tab>
-        <ion-tab title="Whatsapp" href="whatsapp://send?abid=+31627890665" icon-on="ion-social-whatsapp-outline balanced" icon-off="ion-social-whatsapp-outline">
-            <!-- Tab 1 content -->
-        </ion-tab>
-        <ion-tab title="Winkelwagen" icon-on="ln-cart balanced" icon-off="ln-cart" badge="6">
-            <!-- Tab 3 content -->
-        </ion-tab>
-    </ion-tabs>
 </ion-view>

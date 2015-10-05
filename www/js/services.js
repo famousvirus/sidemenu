@@ -173,4 +173,6 @@ angular.module('ionizer-wooshop.services', ['common.services'])
             return deferred.promise;
         }
     }
+
 }])
+
