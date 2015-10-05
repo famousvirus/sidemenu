@@ -56,7 +56,6 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
             'menuContent': {
                 templateUrl: 'templates/home.html',
                 controller: 'BrowseCtrl'
-
             }
         }
     })
@@ -137,15 +136,6 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
         }
     })
 
-    .state('app.bbqplanner', {
-        url: '/bbqplanner',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/bbq-planner.html',
-            }
-        }
-    })
-
     .state('app.over-ons', {
         url: '/over-ons',
         views: {
@@ -154,6 +144,16 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
             }
         }
     })
+
+    .state('app.bbq-planner', {
+        url: '/bbq-planner',
+        views: {
+            'menuContent': {
+            templateUrl: 'templates/bbq-planner.html',
+            }
+        }
+    })
+
 
     .state('app.contact', {
         url: '/contact',

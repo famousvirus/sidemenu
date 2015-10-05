@@ -14,12 +14,12 @@
                 {{product.title}}
                 <span class="item-note">{{product.price | currency:"€"}}  </span>
             </a>    
-          <a class="item item-icon-left item-icon-right" href="#">
-          <i class="icon ion-minus-circled" ng-click="subtractQuantity(product)"></i>Quantity {{number}}
+          <a class="item item-icon-left item-icon-right">
+          <i class="icon ion-minus-circled" ng-click="subtractQuantity(product)"></i>Aantal {{number}}
           <i class="icon ion-plus-circled" ng-click="addQuantity(product)"></i> 
           </a>
           <button class="item button button-block button-positive" ng-click="submit() ; intoCart({{product}})">
-                    Add to Cart
+                    In winkelwagentje
           </button>
         </div>
 </ion-content>
