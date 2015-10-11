@@ -90,6 +90,7 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
             ++$scope.number;
         }
 
+
     $scope.subtractQuantity = function(product) {
         if ($scope.number == 0) {
             $scope.number = 0;
