@@ -17,11 +17,11 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
- /* List product*/
+
+/* List product*/
 
 
- /* end List product*/
-
+/* end List product*/
 
 .input-tag,
 .login-user input[type="text"],
@@ -36,7 +36,6 @@ $dark:                            #444 !default;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
 a,
 a:hover {
     text-decoration: none;
@@ -351,11 +350,10 @@ h1.title.back-arrow i {
 h2.title {
     color: #fff;
     font-weight: 300;
-text-align: center;
-vertical-align: middle;
-line-height: 200px; 
+    text-align: center;
+    vertical-align: middle;
+    line-height: 200px;
     text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
-
 }
 
 h2.title-b {
@@ -4892,7 +4890,8 @@ kbd,
 pre,
 samp {
     font-size: 1em;
-    font-family: "Montserrat", sans-serif;;
+    font-family: "Montserrat", sans-serif;
+    ;
 }
 
 
@@ -5438,7 +5437,7 @@ ion-infinite-scroll:not(.active) .icon:before {
 
 p {
     margin: 0 0 10px;
-    font-color:#aaa;
+    font-color: #aaa;
 }
 
 small {
@@ -5474,7 +5473,7 @@ h6,
 .h5,
 .h6 {
     color: #212121;
-    font-weight: 500;
+    font-weight: 400;
     font-family: "Montserrat", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
     line-height: 1.2;
 }
@@ -13119,7 +13118,9 @@ a.dark {
     background-color: rgba(0, 255, 0, 0.6);
 }
 
+
 /* price label in items */
+
 .price-tag {
     width: auto;
     height: 22px;
@@ -13136,7 +13137,7 @@ a.dark {
 
 .item-note-price {
     float: right;
-width: auto;
+    width: auto;
     height: 22px;
     margin-top: 10px;
     margin-right: 10px;
@@ -13147,3 +13148,4 @@ width: auto;
     color: #878787;
     font-size: 14px;
 }
+

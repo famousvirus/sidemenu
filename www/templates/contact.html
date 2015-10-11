@@ -3,20 +3,25 @@
         <h1 class="title">Contact</h1>
     </div>
     <ion-content>
-        <div class="logo">
-            <img src="img/ideaal-catering-logo.png">
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Naam</span>
+                <input type="text" placeholder="Naam">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Email</span>
+                <input type="text" placeholder="Email">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Telefoon</span>
+                <input type="text" placeholder="Telefoon">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Opmerkingen</span>
+                <textarea placeholder="Opmerkingen" style="height:200px"></textarea>
+            </label>
         </div>
-        <div class="card">
-            <div class="item item-divider">
-                Contact
-            </div>
-            <div class="item item-text-wrap">
-                <h2>Ideaal Catering B.V.</h2>
-                <p>Rolafweg-Noord 53, 3411 BJ, Lopik</p>
-                <p>06-83447674</p>
-                <p>info@ideaalcatering.nl</p>
-                <p>KvK : 58107363</p>
-            </div>
-        </div>
+        <div class="content padding">
+            <button class="button icon ion-ios-paperplane-outline button-block button-positive" ng-click="">  Verstuur</button>
     </ion-content>
 </ion-view>
