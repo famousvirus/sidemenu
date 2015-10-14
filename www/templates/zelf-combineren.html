@@ -5,7 +5,7 @@
     <div class="tabs-striped tabs-top tabs-background-light tabs-color-assertive">
 
         <div class="tabs">
-                <a class="tab-item active" href="" rel="tab1" ng:click="selected=1" ng:class="{'active' : selected==1 }">Vless</a>
+                <a class="tab-item" href="" rel="tab1" ng:click="selected=1" ng:class="{'active' : selected==1 }">Vless</a>
                 <a class="tab-item" href="" rel="tab2" ng:click="selected=2" ng:class="{'active' : selected==2 }">Vegetarisch</a>
                 <a class="tab-item" href="" rel="tab3" ng:click="selected=3" ng:class="{'active' : selected==3 }">Vis</a>
                 <a class="tab-item" href="" rel="tab4" ng:click="selected=4" ng:class="{'active' : selected==4 }">Specials</a>
@@ -14,7 +14,18 @@
         </div>
 
     </div>
-    <div id="tab1" class="tabContent selected" ng:hide="selected != 1">
+    <div id="tab1" class="tabContent selected" ng:hide="selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5 ">
+        <ion-content class="has-tabs-top" overflow-scroll="false" delegate-handle- "myScrollDelegate">
+            <div class="list" ng-repeat="product in products | filter:{categories:'Vis'}">
+                <a class="item item-thumbnail-left" href="#/app/details/{{product.id}}">
+                    <img href="#/app/details/{{product.id}}" ng-src="{{product.featured_src}}">
+                    <h2> {{product.title}}</h2>
+                    <p class="price-tag pull-left">{{product.price | currency:"€"}} </p>
+                </a>
+            </div>
+        </ion-content>
+    </div>
+    <div id="tab1" class="tabContent selected" ng:show="selected == 1">
         <ion-content class="has-tabs-top" overflow-scroll="false" delegate-handle- "myScrollDelegate">
             <div class="list" ng-repeat="product in products | filter:{categories:'Vlees'}">
                 <a class="item item-thumbnail-left" href="#/app/details/{{product.id}}">

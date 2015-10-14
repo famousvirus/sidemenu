@@ -9,8 +9,8 @@
             </ion-nav-buttons>
 
         <ion-nav-buttons side="right">
-        <a href="#/app/winkelwagen">
-        <button menu-toggle="right" class="button button-icon icon ion-ios-cart"></button>
+        <a href="#/app/search">
+        <button menu-toggle="right" class="button button-icon icon ion-search"></button>
         </a>
         </ion-nav-buttons>
         </ion-nav-bar>
@@ -48,8 +48,11 @@
                 <ion-item nav-clear href="whatsapp://send?abid=0650694400&text=bestel" menu-close class="item-icon-left">
                     <i class="icon ion-social-whatsapp-outline side-menu-i"></i> Whatsapp
                 </ion-item>
-                <ion-item ng-controller="CartCtrl"nav-clear href="#/app/" menu-close class="item-icon-left">
+                <ion-item nav-clear href="#/app/winkelwagen" menu-close class="item-icon-left">
                     <i class="icon ln-cart side-menu-i"></i> Winkelwagen
+                </ion-item>
+                <ion-item nav-clear href="#/app/account" menu-close class="item-icon-left">
+                    <i class="icon ion-person side-menu-i"></i> Account
                 </ion-item>
             </ion-list>
         </ion-content>

@@ -67,53 +67,49 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
     
 
 
-.controller('BrowseDetailsCtrl', function($scope, $state, $localstorage) {
+.controller('BrowseDetailsCtrl', function($scope, $state, $localstorage , $ionicLoading, $timeout) {
     var ID = $state.params.productID;
     var products = $localstorage.getObject('All');
-    $scope.products = products.filter(function( obj ) {
+    $scope.allproduct = $localstorage.getObject('All'); 
+    $scope.products = products.filter (function( obj ) {
+    return obj.id == ID});
+    $scope.IO = $state.params.productID;
+    $scope.inCart = $scope.cartItems.filter (function( obj ) {
     return obj.id == ID});
 
-    $scope.list = [];
-    $scope.number = 0;
-
-    $scope.submit = function() {
-        if ($scope.number) {
-        $localstorage.destroy('quantity');
-        $scope.list.push(this.number);
-        $scope.products[0].quantity  = $scope.list[0];
-        $localstorage.setObject('quantity', $scope.products[0].quantity);
+    index = -1;
+    for(var i = 0, len = $scope.cartItems.length; i < len; i++) {
+    if ($scope.cartItems[i].id == $state.params.productID) {
+    index = i;
+    break;
         }
-        console.log($scope.products[0].quantity);
     }
-    
-    $scope.addQuantity = function(product) {
-            ++$scope.number;
-        }
 
+    $scope.intoCart = function() {
 
-    $scope.subtractQuantity = function(product) {
-        if ($scope.number == 0) {
-            $scope.number = 0;
-        } else {
-            --$scope.number;
-        }
+        $ionicLoading.show({
+            template: 'toegevoegd aan winkelwagen'
+        });
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 1300);
+
+        $scope.shouldAnimate = true;
+
+        $timeout(function() {
+            $scope.shouldAnimate = false;
+        }, 3000);
+
+        $scope.cartItems.push($scope.products[0]);
+        $localstorage.setObject('cart', $scope.cartItems);
+
+        console.log($scope.cartItems);
+
     }
 
 })
 
 .controller('CheckoutCtrl', function($scope, $stateParams, dataService, $localstorage, $ionicScrollDelegate, $state, $ionicLoading) {
-
-
-    $scope.load = function() {
-
-        $ionicLoading.show({
-            template: 'Please Wait'
-        });
-        $timeout(function() {
-            $ionicLoading.hide();
-        }, 2000);
-    }
-
 
     $scope.formNotValid = false;
 
@@ -177,18 +173,14 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
     // Happens when the Complete Button is pressed
     $scope.complete = function(form) {
         if (form.$valid) {
-        $ionicLoading.show({
-        templateUrl:"templates/Loading.html"
-        })
         dataService.sendOrder($scope.cartItems, $scope.formCheckout, $scope.grand).then(
                 function(returnData) {
-                    console.log(returnData);
-                    $scope.purchaseHistory.push(returnData);
-          $localstorage.setObject('purchaseHistory', $scope.purchaseHistory);
-                    $scope.destoryCart();
-                    $state.go('tab.thanks');
+                        console.log(returnData);
+                        $scope.purchaseHistory.push(returnData);
+                        $localstorage.setObject('purchaseHistory', $scope.purchaseHistory);
+                        $scope.destoryCart();
+                        $state.go('app.thanks');
                 })
-        $ionicLoading.hide()
         } else {
             console.log('Form is not Valid');
             $scope.formNotValid = true;
@@ -205,6 +197,20 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
 })
 
 .controller('CartCtrl', function($scope, $state, $ionicModal, $localstorage) {
+
+    var ID = $state.params.productID;
+    $scope.inCart = $scope.cartItems.filter (function( obj ) {
+    return obj.id == ID});
+
+    index = -1;
+    for(var i = 0, len = $scope.cartItems.length; i < len; i++) {
+    if ($scope.cartItems[i].id == $state.params.productID) {
+    index = i;
+    break;
+        }
+    }
+
+    $scope.hidden = true;
     $scope.storeData = function() {
         $localstorage.setObject('cart', $scope.cartItems);
         console.log($scope.cartItems)
@@ -239,7 +245,8 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
 
     $scope.subtractQuantity = function(product) {
         if (angular.isUndefined(product.quantity) || product.quantity == 0) {
-            product.quantity = 0;
+            $scope.cartItems.splice(index, 1);
+            $scope.hidden = true;
         } else {
             --product.quantity;
         }
@@ -256,11 +263,10 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
         var mystring = "";
         var total = 0;
         var weight = 0;
-        var quan = $localstorage.getObject ('quantity');
 
         if (angular.isUndefined(product.quantity)) {
-            product.quantity = quan;
-        } 
+            product.quantity = 1;
+        }
 
                 
         product.total = product.price * product.quantity;
@@ -279,7 +285,7 @@ angular.module('ionizer-wooshop.controllers', ['ionizer-wooshop.services'])
     }
     
     $scope.toCheckout = function() {
-        $state.go('tab.checkout');
+        $state.go('app.checkout');
     }
 })
 

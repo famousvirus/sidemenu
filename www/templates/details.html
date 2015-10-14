@@ -4,7 +4,7 @@
     </div>
     <ion-content overflow-scroll="false">
         <div class="list card" ng-repeat="product in products">
-            <div class="item item-image" style="height: 200px;">
+            <div class="item item-image">
                 <img href="#" ng-src="{{product.featured_src}}">
             </div>
             <a class="item">
@@ -15,13 +15,18 @@
                 <p data-ng-bind-html="product.description"></p>
             </div>
         </div>
-        <div class="content padding">
-            <button class="button icon ion-bag button-block button-dark" ng-click="addQuantity(product);" ng-hide="{{number}}!=0"> In winkelwagen</button>
-            <a class="item item-icon-left item-icon-right">
-                <i class="icon ion-minus-circled" ng-click="subtractQuantity(product)"></i>
-                <div class="text-center">{{number}}</div>
-                <i class="icon ion-plus-circled" ng-click="addQuantity(product)"></i>
-            </a>
-        </div>
+          <div ng-controller="CartCtrl">
+              <div  class="list card" ng-repeat="product in cartItems | filter:{'id':IO}">
+                  <a class="item item-icon-left item-icon-right">
+                  <i class="icon ion-minus-circled" ng-click="subtractQuantity(product)"></i>Aantal {{product.quantity}}
+                  <i class="icon ion-plus-circled" ng-click="addQuantity(product)"></i> 
+                  </a>
+              </div>
+              <div ng-hide="hidden == false || inCart.length">
+                  <button class="item button button-block button-positive" ng-click="hidden=false ; intoCart()">
+                          In winkelwagentje
+                  </button>
+              </div>
+          </div>
     </ion-content>
 </ion-view>

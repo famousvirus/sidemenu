@@ -36,7 +36,8 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
         url: '/search',
         views: {
             'menuContent': {
-                templateUrl: 'templates/search.html'
+                templateUrl: 'templates/search.html',
+                controller: 'BrowseCtrl'
             }
         }
     })
@@ -164,11 +165,53 @@ angular.module('ideaalCatering', ['ionic', 'ionizer-wooshop.controllers', 'ioniz
         }
     })
 
+
+    .state('app.checkout', {
+        url: '/checkout',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/checkout.html',
+                controller: 'CheckoutCtrl'
+            }
+        }
+    })
+
+
+    .state('app.thanks', {
+        url: '/thanks',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/thanks.html',
+                controller: 'ThanksCtrl'
+            }
+        }
+    })
+
     .state('app.hoe-werkt-het', {
         url: '/hoe-werkt-het',
         views: {
             'menuContent': {
                 templateUrl: 'templates/hoe-werkt-het.html',
+            }
+        }
+    })
+
+    .state('app.account', {
+        url: '/account',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/account.html',
+                controller: 'AccountCtrl'
+            }
+        }
+    })
+
+    .state('app.history', {
+        url: '/history/:historyId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/history.html',
+                controller: 'HistoryCtrl'
             }
         }
     });

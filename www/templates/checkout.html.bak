@@ -1,0 +1,189 @@
+<script id="messages.html" type="text/ng-template">
+    <div class="error assertive" ng-message="required">
+        <i class="ion-information-circled"></i> This field is required!
+    </div>
+    <div class="error assertive" ng-message="minlength">
+        <i class="ion-information-circled"></i> This field is too short!
+    </div>
+    <div class="error assertive" ng-message="maxlength">
+        <i class="ion-information-circled"></i> This field is too long!
+    </div>
+    <div class="error assertive" ng-message="email">
+        <i class="ion-information-circled"></i> Not a Valid Email Address!
+    </div>
+</script>
+<ion-view view-title="Cart">
+    <ion-content>
+        <form name="checkoutForm" ng-submit="complete(checkoutForm)" novalidate="">
+            <div class="list list-inset">
+                <div ng-show="formNotValid">
+                    <h4 class="error assertive">
+                        <i class="ion-information-circled"></i> Some fields had errors in them
+                    </h4>
+                </div>
+                <label class="item item-divider">
+                    Personal
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">First Name</span>
+                    <input type="text" name="first_name" placeholder="John" ng-model="formCheckout.billing_address.first_name" ng-change='saveForm()' required ng-minlength="3">
+                    <div ng-messages="checkoutForm.first_name.$error" ng-show="checkoutForm.first_name.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" name="last_name" placeholder="Doe" ng-model="formCheckout.billing_address.last_name" ng-change='saveForm()' required mg-minlength="3">
+                    <div ng-messages="checkoutForm.last_name.$error" ng-show="checkoutForm.last_name.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" name="email" placeholder="john@doe.com" ng-model="formCheckout.billing_address.email" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.email.$error" ng-show="checkoutForm.email.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Phone</span>
+                    <input type="text" name="phone" placeholder="Phone" ng-model="formCheckout.billing_address.phone" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.phone.$error" ng-show="checkoutForm.phone.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Company Name</span>
+                    <input type="text" name="company" placeholder="PT. Company" ng-model="formCheckout.billing_address.company" ng-change='saveForm()'>
+                    <div ng-messages="checkoutForm.company.$error" ng-show="checkoutForm.company.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-divider">
+                    Billing
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">City</span>
+                    <input type="text" name="city" placeholder="city" ng-model="formCheckout.billing_address.city" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.city.$error" ng-show="checkoutForm.city.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Country</span>
+                    <input type="text" name="country" placeholder="Country" ng-model="formCheckout.billing_address.country" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.country.$error" ng-show="checkoutForm.country.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                
+                
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Address</span>
+                    <input type="text" name="address_1" placeholder="Street Address" ng-model="formCheckout.billing_address.address_1" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.address_1.$error" ng-show="checkoutForm.address_1.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                
+                
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label"></span>
+                    <input type="text" name="address_2" placeholder="Apartment, suite, unit etc. (optional)" ng-model="formCheckout.billing_address.address_2" ng-change='saveForm()'>
+                    <div ng-messages="checkoutForm.address_2.$error" ng-show="checkoutForm.address_2.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Postcode / ZIP</span>
+                    <input type="text" name="postcode" placeholder="Postcode / ZIP" ng-model="formCheckout.billing_address.postcode" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.postcode.$error" ng-show="checkoutForm.postcode.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="formCheckout.sameAddress" ng-model="formCheckout.sameAddress" ng-change='actionShipping();'>
+                    </label>
+                    Same as Billing
+                </li>
+                <!-- Shipping -->
+                <label class="item item-input item-stacked-label" ng-if="!formCheckout.sameAddress">
+                    <span class="input-label">First Name</span>
+                    <input type="text" name="first_name2" placeholder="John" ng-model="formCheckout.shipping_address.first_name" ng-change='saveForm()' required ng-minlength="3">
+                    <div ng-messages="checkoutForm.first_name2.$error" ng-show="checkoutForm.first_name2.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label" ng-if="!formCheckout.sameAddress">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" name="last_name2" placeholder="Doe" ng-model="formCheckout.shipping_address.last_name" ng-change='saveForm()' required ng-minlength="3">
+                    <div ng-messages="checkoutForm.last_name2.$error" ng-show="checkoutForm.last_name2.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">City</span>
+                    <input type="text" name="city" placeholder="City" ng-model="formCheckout.billing_address.country" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.city.$error" ng-show="checkoutForm.city.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Country</span>
+                    <input type="text" name="country" placeholder="Country" ng-model="formCheckout.billing_address.country" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.country.$error" ng-show="checkoutForm.country.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label" ng-if="!formCheckout.sameAddress">
+                    <span class="input-label">Address</span>
+                    <input name="address_12" type="text" placeholder="Street Address" ng-model="formCheckout.shipping_address.address_1" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.address_12.$error" ng-show="checkoutForm.address_12.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label" ng-if="!formCheckout.sameAddress">
+                    <span class="input-label"></span>
+                    <input name="address_22" type="text" placeholder="Apartment, suite, unit etc. (optional)" ng-model="formCheckout.shipping_address.address_2" ng-change='saveForm()'>
+                    <div ng-messages="checkoutForm.address_22.$error" ng-show="checkoutForm.address_22.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label" ng-if="!formCheckout.sameAddress">
+                    <span class="input-label">Postcode / ZIP</span>
+                    <input type="text" name="postcode2" placeholder="Postcode / ZIP" ng-model="formCheckout.shipping_address.postcode" ng-change='saveForm()' required>
+                    <div ng-messages="checkoutForm.postcode2.$error" ng-show="checkoutForm.postcode2.$error && checkoutForm.$submitted">
+                        <div ng-messages-include="messages.html"></div>
+                    </div>
+                </label>
+                <!-- End -->
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Order Notes</span>
+                    <input type="text" placeholder="Notes about your order, e.g. special notes for delivery." ng-model="formCheckout.shipping_note" ng-change='saveForm()'>
+                </label>
+                <label class="item">
+                    <div class="input-label alignleft assertive">
+                        PAYMENT METHOD
+                    </div>
+                    <div class="input-label alignright assertive">
+                        Payment On Delivery
+                    </div>
+                    <div style="clear: both;"></div>
+                </label>
+                <label class="item">
+                    <div class="input-label alignleft assertive">
+                        ORDER TOTAL
+                    </div>
+                    <div class="input-label alignright assertive">
+                        {{grand.Total + grand.Shipping | currency:"€":2}}
+                    </div>
+                    <div style="clear: both;"></div>
+                </label>
+                <button class="item button button-block button-positive">
+                    Place Order
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

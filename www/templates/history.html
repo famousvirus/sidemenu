@@ -1,0 +1,72 @@
+<ion-view>
+    <div class="bar bar-header bar-dark">
+        <h1 class="title">History</h1>
+    </div>
+    <ion-content class="padding">
+        <h4>Order #{{purchaseHistory[currentHistory].order.id}}</h4>
+                <div class="list card product" ng-repeat="product in purchaseHistory[currentHistory].http.request.data.order.line_items">
+            <div class="item">
+                <h2>#{{product.sku}} - {{product.quantity}} items</h2>
+            </div>
+        <a class="item item-thumbnail-left" href="#">
+        <img ng-src="{{product.featured_src}}">
+        <h2>{{ product.title }}</h2>
+        <p><div data-ng-bind-html="product.short_description"></div></p>
+        <h2>Price: {{product.price | currency : "€" }}</h2>
+        </a>
+        </div>
+        <!-- Grand Total -->
+        <div class="list card product">
+            <div class="list">
+                <label class="item">
+                    <div class="input-label alignleft assertive">
+                        Payment Method
+                    </div>
+                    <div class="input-label alignright assertive">
+                        Payment Upon Delivery
+                    </div>
+                    <div style="clear: both;"></div>
+                </label>
+                <label class="item">
+                    <div class="input-label alignleft assertive">
+                        Order Total
+                    </div>
+                    <div class="input-label alignright assertive">
+                        {{purchaseHistory[currentHistory].order.total | currency:"€":2}}
+                    </div>
+                    <div style="clear: both;"></div>
+                </label>
+            </div>
+        </div>
+        <h4>Note: {{purchaseHistory[currentHistory].order.note}}</h4>
+        <br>
+        <br>
+        <h4>Your Details</h4>
+        <br>
+        <br>
+        <h4>Billing Address</h4>
+        <p>
+            {{purchaseHistory[currentHistory].order.customer.billing_address.first_name}} {{purchaseHistory[currentHistory].order.customer.billing_address.last_name}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.company}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.email}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.phone}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.address_1}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.address_2}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.city}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.state}}
+            <br> {{purchaseHistory[currentHistory].order.customer.billing_address.postcode}}
+            <br>
+        </p>
+        <h4>Shipping Address</h4>
+        <p>
+            {{purchaseHistory[currentHistory].order.customer.shipping_address.first_name}} {{purchaseHistory[currentHistory].order.customer.shipping_address.last_name}}
+            <br> {{purchaseHistory[currentHistory].order.customer.shipping_address.company}}
+            <br> {{purchaseHistory[currentHistory].order.customer.shipping_address.address_1}}
+            <br> {{purchaseHistory[currentHistory].order.customer.shipping_address.address_2}}
+            <br> {{purchaseHistory[currentHistory].order.customer.shipping_address.city}}
+            <br> {{purchaseHistory[currentHistory].order.customer.shipping_address.country}}
+            <br> {{purchaseHistory[currentHistory].order.customer.shipping_address.postcode}}
+            <br>
+        </p>
+    </ion-content>
+</ion-view>
